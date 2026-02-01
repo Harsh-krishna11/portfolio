@@ -13,7 +13,7 @@ const fadeUp = {
 
 function Project() {
   const { id } = useParams();
-  const project = projects.find((p) => p.id === id);
+  const project = projects.find((p) => p.id === Number(id));
 
   if (!project) return <h2>Project Not Found</h2>;
 
@@ -29,7 +29,7 @@ function Project() {
         >
           <h1>{project.title}</h1>
           <p>{project.description}</p>
-          <span>{project.emotion}</span>
+          {project.emotion && <span>{project.emotion}</span>}
         </motion.div>
       </section>
 

@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-import Particles from "react-tsparticles";
-import { useCallback } from "react";
-import { loadSlim } from "tsparticles-slim";
-
+import {  useEffect, useState } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40, filter: "blur(6px)" },
@@ -15,52 +14,69 @@ const fadeUp = {
 };
 
 function AboutSection() {
+  const [engineReady, setEngineReady] = useState(false);
 
-  const particlesInit = useCallback(async (engine) => {
-    await loadSlim(engine);
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      console.log("ENGINE INIT");
+      await loadSlim(engine);
+    }).then(() => {
+      setEngineReady(true);
+    });
   }, []);
 
   return (
     <section id="about" className="ai-about">
       {/* AI PARTICLES */}
-      <Particles
-        className="ai-about__particles"
-        init={particlesInit}
-        options={{
-          fullScreen: false,
-          background: {
-            color: "transparent",
-          },
-          particles: {
-            number: {
-              value: 50,
-              density: {
-                enable: true,
-                area: 800,
+      {engineReady && (
+        <Particles
+          className="ai-about__particles"
+          options={{
+            fullScreen: {
+              enable: false,
+            },
+            detectRetina: true,
+            interactivity: {
+              events: {
+                onHover: { enable: false },
+                onClick: { enable: false },
+                resize: true,
               },
             },
-            color: {
-              value: "#00eaff",
+            background: {
+              color: "transparent",
             },
-            opacity: {
-              value: 0.2,
+            particles: {
+              number: {
+                value: 50,
+                density: {
+                  enable: true,
+                  area: 800,
+                },
+              },
+              color: {
+                value: "#00eaff",
+              },
+              opacity: {
+                value: 0.7,
+              },
+              size: {
+                value: 5,
+              },
+              move: {
+                enable: true,
+                speed: 5,
+              },
+              links: {
+                enable: true,
+                distance: 150,
+                color: "#00eaff",
+                opacity: 0.8,
+              },
             },
-            size: {
-              value: 5,
-            },
-            move: {
-              enable: true,
-              speed: 5,
-            },
-            links: {
-              enable: true,
-              distance: 150,
-              color: "#00eaff",
-              opacity: 1,
-            },
-          },
-        }}
-      />
+          }}
+        />
+      )}
 
       <div className="main-container ai-about__content">
         {/* TITLE */}

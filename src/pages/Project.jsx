@@ -13,7 +13,10 @@ const fadeUp = {
 
 function Project() {
   const { id } = useParams();
-  const project = projects.find((p) => p.id === Number(id));
+  console.log(id);
+
+  const project = projects.find((p) => p.id === id);
+  console.log(project);
 
   if (!project) return <h2>Project Not Found</h2>;
 

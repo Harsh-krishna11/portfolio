@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import HomeHero from "../components/HomeHero";
 import AboutSection from "../components/AboutSection";
 import ProjectsSection from "../components/ProjectsSection";

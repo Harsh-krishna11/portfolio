@@ -1,0 +1,163 @@
+import { motion } from "framer-motion";
+import Particles from "react-tsparticles";
+import { useCallback } from "react";
+import { loadSlim } from "tsparticles-slim";
+
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40, filter: "blur(6px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.9, ease: "easeOut" },
+  },
+};
+
+function AboutSection() {
+
+  const particlesInit = useCallback(async (engine) => {
+    await loadSlim(engine);
+  }, []);
+
+  return (
+    <section id="about" className="ai-about">
+      {/* AI PARTICLES */}
+      <Particles
+        className="ai-about__particles"
+        init={particlesInit}
+        options={{
+          fullScreen: false,
+          background: {
+            color: "transparent",
+          },
+          particles: {
+            number: {
+              value: 50,
+              density: {
+                enable: true,
+                area: 800,
+              },
+            },
+            color: {
+              value: "#00eaff",
+            },
+            opacity: {
+              value: 0.2,
+            },
+            size: {
+              value: 5,
+            },
+            move: {
+              enable: true,
+              speed: 5,
+            },
+            links: {
+              enable: true,
+              distance: 150,
+              color: "#00eaff",
+              opacity: 1,
+            },
+          },
+        }}
+      />
+
+      <div className="main-container ai-about__content">
+        {/* TITLE */}
+        <motion.h2
+          className="ai-about__title"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          About <span className="ai-glow">Me</span>
+        </motion.h2>
+
+        {/* TOP GRID */}
+        <div className="ai-about__grid">
+          {/* LEFT */}
+          <motion.div
+            className="ai-about__text"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeUp}
+          >
+            <h3>I’m not perfect — I’m conscious.</h3>
+
+            <p>
+              I am a <strong>Frontend Developer</strong> who doesn’t chase
+              perfection to show off. I believe in{" "}
+              <strong>continuous effort</strong>, clarity of thought, and honest
+              growth.
+            </p>
+
+            <p>
+              I know my strengths. I accept my weaknesses. And I learn from
+              both.
+            </p>
+
+            <blockquote>
+              When one acts with sincerity, learns from mistakes, and stays
+              aligned with truth — progress becomes inevitable.
+            </blockquote>
+          </motion.div>
+
+          {/* RIGHT */}
+          <motion.div
+            className="ai-about__side"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <div className="ai-about__card">
+              <h4>What I work with</h4>
+              <div className="ai-skills">
+                {[
+                  "HTML",
+                  "CSS",
+                  "JavaScript",
+                  "React",
+                  "Git",
+                  "GitHub",
+                  "Problem Solving",
+                  "Learning Mindset",
+                ].map((skill, i) => (
+                  <span key={i} className="ai-skill">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* FULL WIDTH PHILOSOPHY */}
+        <motion.div
+          className="ai-about__philosophy"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9 }}
+        >
+          <p>
+            Wherever I work, I treat that place like <strong>my own</strong>.
+            The people I work with become my family.
+          </p>
+
+          <p>
+            I believe hope is powerful.{" "}
+            <em>
+              That one belief — <strong>“sab ho jaega”</strong> — becomes the
+              reason we keep learning, keep improving, and keep moving forward.
+            </em>
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+export default AboutSection;

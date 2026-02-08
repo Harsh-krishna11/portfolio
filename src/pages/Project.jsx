@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import projects from "../data/Projects";
-import VFXParticles from "../components/VFXParticles";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -25,9 +24,6 @@ function Project() {
     <>
       {/* HERO */}
       <div className="ai-project-page">
-        <div className="ai-project-page__bg">
-          <VFXParticles />
-        </div>
         <section className="ai-project-hero">
           <motion.div
             className="ai-project-hero__content"

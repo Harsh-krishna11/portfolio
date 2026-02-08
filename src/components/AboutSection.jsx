@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 
@@ -48,7 +48,7 @@ function AboutSection() {
             },
             particles: {
               number: {
-                value: 50,
+                value: 80,
                 density: {
                   enable: true,
                   area: 800,
@@ -129,22 +129,66 @@ function AboutSection() {
             variants={fadeUp}
           >
             <div className="ai-about__card">
-              <h4>What I work with</h4>
-              <div className="ai-skills">
-                {[
-                  "HTML",
-                  "CSS",
-                  "JavaScript",
-                  "React",
-                  "Git",
-                  "GitHub",
-                  "Problem Solving",
-                  "Learning Mindset",
-                ].map((skill, i) => (
-                  <span key={i} className="ai-skill">
-                    {skill}
-                  </span>
-                ))}
+              <h4>Technical Skills</h4>
+              <div className="ai-skills-layout">
+                <div className="ai-skills-group">
+                  <h5>Programming Languages</h5>
+                  <div className="ai-skills">
+                    {["C++", "Java", "JavaScript", "Python", "HTML", "CSS"].map(
+                      (skill, i) => (
+                        <span key={i} className="ai-skill">
+                          {skill}
+                        </span>
+                      ),
+                    )}
+                  </div>
+                </div>
+
+                <div className="ai-skills-group">
+                  <h5>Core Concepts</h5>
+                  <div className="ai-skills">
+                    {["Data Structures", "Algorithms", "Problem Solving"].map(
+                      (skill, i) => (
+                        <span key={i} className="ai-skill">
+                          {skill}
+                        </span>
+                      ),
+                    )}
+                  </div>
+                </div>
+
+                <div className="ai-skills-group">
+                  <h5>Frontend</h5>
+                  <div className="ai-skills">
+                    {["React.js", "Redux", "Tailwind CSS"].map((skill, i) => (
+                      <span key={i} className="ai-skill">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="ai-skills-group">
+                  <h5>Backend</h5>
+                  <div className="ai-skills">
+                    {["Node.js", "Express.js", "Mongoose"].map((skill, i) => (
+                      <span key={i} className="ai-skill">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="ai-skills-group">
+                  <h5>Databases</h5>
+                  <div className="ai-skills">
+                    {["MongoDB", "Firebase"].map((skill, i) => (
+                      <span key={i} className="ai-skill">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>

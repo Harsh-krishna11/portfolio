@@ -409,11 +409,11 @@ section {
 
 .ai-about {
   position: relative;
-  padding: 14rem 0;
+  /* padding: 9rem; */
   background: linear-gradient(180deg, #02040a, #050b18);
   color: #cfd8ff;
   overflow: hidden;
-  min-height: 100vh;
+  min-height: auto;
 }
 
 .ai-about::before {
@@ -463,9 +463,9 @@ section {
 
 .ai-about__title {
   text-align: center;
-  font-size: 4.6rem;
+  font-size: 4.5rem;
   font-weight: 900;
-  margin-bottom: 7rem;
+  margin-bottom: 3rem;
   color: #e6f1ff;
 }
 
@@ -473,8 +473,9 @@ section {
 
 .ai-about__grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 6rem;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
 }
 
 
@@ -482,14 +483,14 @@ section {
   max-width: 1000px;
   margin: 0 auto;
   text-align: center;
-  padding-top: 2rem;
+  padding-top: 4rem;
 }
 
 .ai-about__philosophy p {
   font-size: 2.1rem;
   line-height: 1.9;
   color: #d6e2ff;
-  margin-bottom: 2.2rem;
+  margin-bottom: 1.3rem;
 }
 
 .ai-about__philosophy strong {
@@ -503,17 +504,24 @@ section {
 
 
 /* TEXT */
-
+.ai-about__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
 .ai-about__text h3 {
-  font-size: 3.2rem;
+  font-size: 2rem;
   font-weight: 800;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   color: #ffffff;
 }
 
 .ai-about__text p {
-  font-size: 2rem;
-  line-height: 1.9;
+  align-self: center;
+  font-size: 1.5rem;
+  line-height: 1.8;
   letter-spacing: 0.2px;
   color: #d6e2ff;
   margin-bottom: 2rem;
@@ -538,7 +546,7 @@ section {
     rgba(0, 234, 255, 0.12),
     rgba(0, 234, 255, 0.02)
   );
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   line-height: 1.8;
   color: #b8f3ff;
   position: relative;
@@ -556,41 +564,120 @@ section {
 /* SIDE CARD */
 
 .ai-about__card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(0, 234, 255, 0.15);
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 3.5rem;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+
+  border: 1px solid rgba(0, 234, 255, 0.22);
   border-radius: 18px;
-  padding: 3.5rem;
   backdrop-filter: blur(14px);
-  transition: transform 0.6s ease, box-shadow 0.6s ease;
+
+  box-shadow:
+    inset 0 0 40px rgba(0, 234, 255, 0.04),
+    0 20px 60px rgba(0, 0, 0, 0.55);
+
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .ai-about__card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 30px 80px rgba(0, 234, 255, 0.15);
+  transform: translateY(-6px);
+  box-shadow:
+    inset 0 0 40px rgba(0, 234, 255, 0.06),
+    0 30px 80px rgba(0, 234, 255, 0.18);
 }
 
+
 .ai-about__card h4 {
+  text-align: center;
   font-size: 2.2rem;
   margin-bottom: 2.5rem;
   color: #e6f1ff;
 }
 
 /* SKILLS */
+.ai-skills-group {
+  margin-bottom: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.8rem 2rem;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 234, 255, 0.18);
+}
+
+.ai-skills-group h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: #9db7ff;
+  position: relative;
+}
+
+.ai-skills-group h5::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 26px;
+  height: 2px;
+  background: linear-gradient(90deg, #00eaff, transparent);
+}
 
 .ai-skills {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.4rem;
+  gap:0.5rem 0.8rem;
 }
 
-.ai-skill {
-  padding: 0.9rem 1.8rem;
-  font-size: 1.5rem;
-  border-radius: 999px;
-  background: rgba(0, 234, 255, 0.12);
-  color: #00eaff;
-  border: 1px solid rgba(0, 234, 255, 0.25);
+.ai-skills-layout {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2.2rem ;
 }
+
+/* First row: 2 items */
+.ai-skills-group:nth-child(1),
+.ai-skills-group:nth-child(2) {
+  grid-column: span 3;
+}
+
+/* Second row: 3 items */
+.ai-skills-group:nth-child(3),
+.ai-skills-group:nth-child(4),
+.ai-skills-group:nth-child(5) {
+  grid-column: span 2;
+}
+
+
+.ai-skill {
+  width: auto;
+  text-align: center;
+  padding: 1rem 1rem;
+  font-size: 1.2rem;
+  border-radius: 999px;
+  background: rgba(0, 234, 255, 0.14);
+  color: #00eaff;
+  border: 1px solid rgba(0, 234, 255, 0.35);
+  backdrop-filter: blur(6px);
+  transition: all 0.35s ease;
+  justify-self: start;
+  white-space: nowrap;
+}
+
+.ai-skill:hover {
+  background: rgba(0, 234, 255, 0.22);
+  box-shadow: 0 0 18px rgba(0, 234, 255, 0.45);
+  transform: translateY(-3px);
+}
+
 
 /* RESPONSIVE */
 
@@ -600,8 +687,14 @@ section {
   }
 
   .ai-about__title {
-    font-size: 3.4rem;
+    font-size: 3rem;
   }
+
+  .ai-about__text {
+  max-width: 520px;
+  text-align: center;
+}
+
 
   .ai-about__text h3 {
     font-size: 2.6rem;
@@ -610,6 +703,18 @@ section {
   .ai-about__text p {
     font-size: 1.85rem;
   }
+   .ai-skills {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ai-skills-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-skills-group {
+    grid-column: span 6 !important;
+  }
+  
 }
 
 /* ======================================================
@@ -617,7 +722,7 @@ section {
 ====================================================== */
 
 .ai-projects {
-  padding: 14rem 0;
+  padding: 10rem 0;
   background: linear-gradient(180deg, #050b18, #02040a);
   color: #d6e2ff;
 }
@@ -819,7 +924,7 @@ section {
 ====================================================== */
 
 .ai-contact {
-  padding: 14rem 0;
+  padding: 3rem 0;
   background: linear-gradient(180deg, #02040a, #050b18);
   color: #d6e2ff;
   text-align: center;
@@ -957,6 +1062,7 @@ section {
 .ai-footer {
   padding: 10rem 0 4rem;
   background: linear-gradient(180deg, #02040a, #000);
+  
   color: #d6e2ff;
 }
 
@@ -1100,12 +1206,45 @@ section {
 /* ===============================
    AI PROJECT DETAILS – FIXED
 ================================ */
+/* PAGE WRAPPER */
+.ai-project-page {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #02040a, #000);
+}
+
+/* FULL PAGE PARTICLE BACKGROUND */
+.ai-project-page__bg {
+  position: fixed;              /* ⭐ FULL PAGE */
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.ai-project-page__bg canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* CONTENT ABOVE PARTICLES */
+.ai-project-hero,
+.ai-project-details {
+  position: relative;
+  z-index: 0;
+}
+
+
 
 .ai-project-hero {
   padding: 10rem 0 6rem;
-  background: linear-gradient(135deg, #060b14, #02040a);
   text-align: center;
   color: #e6f1ff;
+  background: linear-gradient(
+    135deg,
+    rgba(6, 11, 20, 0.85),
+    rgba(2, 4, 10, 0.85)
+  );
 }
 
 .ai-project-hero h1 {
@@ -1129,7 +1268,11 @@ section {
 
 .ai-project-details {
   padding: 6rem 0 10rem;
-  background: linear-gradient(180deg, #02040a, #050b18);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 4, 10, 0.85),
+    rgba(5, 11, 24, 0.85)
+  );
 }
 
 /* GRID */
@@ -1225,5 +1368,17 @@ section {
 @media (max-width: 900px) {
   .ai-project-layout {
     grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .ai-about__card {
+    padding: 2.5rem;
+  }
+
+  .ai-skill {
+    font-size: 1.35rem;
+    padding: 0.8rem 1.6rem;
   }
 }
